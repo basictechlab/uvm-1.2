@@ -1,0 +1,18 @@
+QUESTA_HOME 				= "C:/intelFPGA_lite/22.1std/questa_fse"
+
+UVM_DPI_HOME 				= $(QUESTA_HOME)/uvm-1.2/win64
+USES_PRECOMPILED_UVM_DPI 	= 1
+ 
+UVM_HOME	= ../../..
+ 
+include ../../CustomMakefile.questa
+ 
+all: run
+ 
+comp: vlib
+	$(VLOG) +incdir+. \
+		hello_world.sv
+ 
+run: comp
+	$(VSIM)
+	$(CHECK)
